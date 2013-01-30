@@ -17,6 +17,7 @@ derby.log
 .project
 .manager
 .externalToolBuilders
+/.cache
 
 # ensime/emacs conf files
 .ensime

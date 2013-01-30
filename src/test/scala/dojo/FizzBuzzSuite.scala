@@ -1,13 +1,13 @@
 package dojo
 
-import org.scalatest.FunSuite
-
 import org.junit.runner.RunWith
+import org.scalatest.FunSuite
 import org.scalatest.junit.JUnitRunner
+
+import dojo.FizzBuzz._
 
 @RunWith(classOf[JUnitRunner])
 class FizzBuzzSuite extends FunSuite {
-  import FizzBuzz._
 
   test("1 translates to 1") {
     assert("1" === fizzbuzz(1))
@@ -37,19 +37,19 @@ class FizzBuzzSuite extends FunSuite {
   }
 
   test("game to upper bound 1") {
-    assert(game(1) === List("1"))
+    assert(game(1) === Seq("1"))
   }
 
   test("game to upper bound 2") {
-    assert(game(2) === List("1", "2"))
+    assert(game(2) === Seq("1", "2"))
   }
 
   test("game to upper bound 3") {
-    assert(game(3) === List("1", "2", "Fizz"))
+    assert(game(3) === Seq("1", "2", "Fizz"))
   }
 
   test("game to upper bound 5") {
-    assert(game(5) === List("1", "2", "Fizz", "4", "Buzz"))
+    assert(game(5) === Seq("1", "2", "Fizz", "4", "Buzz"))
   }
 
   test("game to upper bound 15") {
@@ -58,15 +58,6 @@ class FizzBuzzSuite extends FunSuite {
   }
   test("7 translates to Wizz") {
     assert("Wizz" === fizzbuzz(7))
-  }
-  test("wizz(7) is true") {
-    assert(isWizz(7))
-  }
-  test("wizz other than 7 is false") {
-    assert(!isWizz(6))
-  }
-  test("fizz(3) is true") {
-    assert(isFizz(3))
   }
   test("21 translates to Fizz Wizz") {
     assert(fizzbuzz(21) === "Fizz Wizz")

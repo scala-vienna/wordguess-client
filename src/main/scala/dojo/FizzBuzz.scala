@@ -1,34 +1,14 @@
 package dojo
 
-import scala.collection.immutable.SortedMap
-
 object FizzBuzz {
+  val default = List((3, "Fizz"), (5, "Buzz"), (7, "Wizz"))
 
-  val conditions = Map(
-    { i => isFizz(i) } -> "Fizz",
-    { i => isBuzz(i) } -> "Buzz",
-    { i => isWizz(i) } -> "Wizz")
+  def game(upperBound: Int) = (1 to upperBound) map (fizzbuzz(_))
 
-  def game(upperBound: Int): List[String] =
-    (1 to upperBound).toList map (fizzbuzz(_))
-
-  def fizzbuzz(i: Int) = {
-    val res = conditions.foldLeft("") {
-      case (s, (cond, word)) if (cond(i)) => (s + word + " ")
-      case (s, _) => s
-    }.trim match {
-      case "" => i.toString
-      case s => s
-    }
-    res
+  def fizzbuzz(num: Int, conditions: List[(Int, String)] = default, acc: List[String] = Nil): String = conditions match {
+    case Nil => if (acc.isEmpty) num.toString else acc.reverse.mkString(" ")
+    case ((prime, word) :: xy) =>
+      val check = if (num % prime == 0 || num.toString.contains(prime.toString)) word :: acc else acc
+      fizzbuzz(num, xy, check)
   }
-
-  def isFizz(i: Int) = isDivisibleOrContains(i, 3)
-  def isBuzz(i: Int) = isDivisibleOrContains(i, 5)
-  def isWizz(i: Int) = isDivisibleOrContains(i, 7)
-  
-  def isDivisibleOrContains(num:Int, other:Int) = {
-    num % other == 0 || num.toString.contains(other.toString)
-  }
-
 }
