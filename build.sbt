@@ -1,4 +1,4 @@
-name := "fizz-buzz"
+name := "dojo-quickstart"
 
 version := "0.1.0"
  
