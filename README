@@ -1,1 +1,4 @@
-Recursive Fizz Buzz implementation.
+Quick-start project for Scala Coding Dojos.
+
+- Eclipse SBT support plugin already configured.
+- Uses Scala 2.10 -> you will need an IDE that supports it!
