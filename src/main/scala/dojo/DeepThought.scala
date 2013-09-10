@@ -2,7 +2,7 @@ package dojo
 
 object DeepThought {
 
-  def compute(question: AnyVal): Int = {
+  def compute(question: String): Int = {
     42
   }
 }
