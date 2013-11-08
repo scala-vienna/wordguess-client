@@ -10,6 +10,6 @@ EclipseKeys.executionEnvironment := Some(EclipseExecutionEnvironment.JavaSE17)
 EclipseKeys.withSource := true
   
 libraryDependencies ++= Seq(
-  "junit" % "junit" % "4.10" % "test",
+  "junit" % "junit" % "4.11" % "test",
   "org.scalatest" %% "scalatest" % "2.0" % "test->default"
 )
