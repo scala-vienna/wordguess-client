@@ -11,5 +11,5 @@ EclipseKeys.withSource := true
   
 libraryDependencies ++= Seq(
   "junit" % "junit" % "4.10" % "test",
-  "org.scalatest" %% "scalatest" % "1.9.1" % "test->default"
+  "org.scalatest" %% "scalatest" % "2.0" % "test->default"
 )
