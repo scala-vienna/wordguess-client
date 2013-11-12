@@ -1,10 +1,8 @@
-package main
+package clashcode
 
 import org.junit.runner.RunWith
 import org.scalatest.FunSuite
 import org.scalatest.junit.JUnitRunner
-
-import main.DeepThought._
 
 @RunWith(classOf[JUnitRunner])
 class MainSuite extends FunSuite {

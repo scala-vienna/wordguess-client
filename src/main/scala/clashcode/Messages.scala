@@ -1,3 +1,5 @@
+package clashcode
+
 /**
  * Akka Workshop:
  * Contains all the Akka Messages sent between Actors.
@@ -5,4 +7,5 @@
  */
 
 case class Hello(numbers: Seq[Int])
+
 
