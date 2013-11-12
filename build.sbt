@@ -11,5 +11,6 @@ EclipseKeys.withSource := true
   
 libraryDependencies ++= Seq(
   "junit" % "junit" % "4.11" % "test",
-  "org.scalatest" %% "scalatest" % "2.0" % "test->default"
+  "org.scalatest" %% "scalatest" % "2.0" % "test->default",
+  "com.typesafe.akka" % "akka-remote_2.10" % "2.2.3" // depends on akka-actor
 )
