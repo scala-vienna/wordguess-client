@@ -1,4 +1,4 @@
-name := "dojo-quickstart"
+name := "akka-workshop-quickstart"
 
 version := "0.1.0"
 
