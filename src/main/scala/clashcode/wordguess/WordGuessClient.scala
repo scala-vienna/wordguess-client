@@ -1,0 +1,56 @@
+package clashcode.wordguess
+
+import akka.actor._
+import akka.event.Logging
+import scala.collection.mutable
+
+import messages._
+
+class WordGuesserClient(playerName: String,
+  gameServer: ActorRef, system: ActorSystem) extends Actor {
+
+  //val letterQueue = mutable.Queue[Char]('o', 'l', 'e', 'r', 'h', 'w', 'd')
+  val letterQueue = mutable.Queue[Char]('r', 'y', 'o', 'u', 'p', 'q', 'k')
+
+  // def getGuessLetter() = letterQueue.dequeue
+  def getGuessLetter(): Char = {
+    print("Letter to guess: ")
+    Console.readChar
+  }
+
+  gameServer ! RequestGame(playerName)
+
+  def receive = {
+    case status: GameStatus => {
+      val wordRepresentation = status.word.map(optC => optC.getOrElse('_')).mkString
+      println("Word: " + wordRepresentation)
+      println("Remaining tries: " + status.remainingTries)
+      if (status.remainingTries > 0) {
+        if (!letterQueue.isEmpty) {
+          val letter = getGuessLetter()
+          //println("Making guess: " + letter)
+          gameServer ! MakeGuess(letter)
+        }
+      }
+    }
+    case NoAvailableGames() => {
+      println("No more games to play - Bye")
+      system.shutdown()
+    }
+    case NotPlayingError() => {
+      println("We are not playing")
+      system.shutdown()
+    }
+    case GameWon(status) => {
+      println("We won the game!")
+      println("The word was: " + status.word.map(_.getOrElse('?')).mkString)
+      system.shutdown()
+    }
+    case GameLost(status) => {
+      println("We lost the game :-(")
+      println("Remaining word: " + status.word.map(_.getOrElse('_')).mkString)
+      system.shutdown()
+    }
+  }
+
+}
