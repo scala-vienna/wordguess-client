@@ -6,8 +6,8 @@ package clashcode.wordguess.messages
 case class GameStatus(word: Seq[Option[Char]], remainingTries: Int)
 
 class GameOver
-  case class GameWon(finalStatus: GameStatus) extends GameOver 
-  case class GameLost(finalStatus: GameStatus) extends GameOver
+case class GameWon(finalStatus: GameStatus) extends GameOver
+case class GameLost(finalStatus: GameStatus) extends GameOver
 
 // Sent to the player when there is no ongoing game with her/him.
 case class NotPlayingError()
