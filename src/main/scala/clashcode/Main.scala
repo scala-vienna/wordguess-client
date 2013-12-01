@@ -19,16 +19,24 @@ object Main extends App {
 
     //val letterQueue = mutable.Queue[Char]('o', 'l', 'e', 'r', 'h', 'w', 'd')
     val letterQueue = mutable.Queue[Char]('r', 'y', 'o', 'u', 'p', 'q', 'k')
+    
+    // def getGuessLetter() = letterQueue.dequeue
+    def getGuessLetter():Char = {
+      print("Letter to guess: ")
+      Console.readChar
+    }
 
     gameServer ! RequestGame(playerName)
 
     def receive = {
       case status: GameStatus => {
-        println("Got game status: " + status)
+        val wordRepresentation = status.word.map(optC => optC.getOrElse('_')).mkString
+        println("Word: " + wordRepresentation)
+        println("Remaining tries: " + status.remainingTries)
         if (status.remainingTries > 0) {
           if (!letterQueue.isEmpty) {
-            val letter = letterQueue.dequeue
-            println("Making guess: " + letter)
+            val letter = getGuessLetter()
+            //println("Making guess: " + letter)
             gameServer ! MakeGuess(letter)
           }
         }
