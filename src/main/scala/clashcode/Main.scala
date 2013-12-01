@@ -12,8 +12,8 @@ import wordguess.messages._
 
 object Main extends App {
 
-  var system:ActorSystem = _
-  
+  var system: ActorSystem = _
+
   class WordGuesser(name: String, gameServer: ActorRef) extends Actor {
     import scala.concurrent.ExecutionContext.Implicits._
 
