@@ -14,13 +14,13 @@ object Main extends App {
 
   var system: ActorSystem = _
 
-  class WordGuesser(name: String, gameServer: ActorRef) extends Actor {
+  class WordGuesser(playerName: String, gameServer: ActorRef) extends Actor {
     import scala.concurrent.ExecutionContext.Implicits._
 
     //val letterQueue = mutable.Queue[Char]('o', 'l', 'e', 'r', 'h', 'w', 'd')
     val letterQueue = mutable.Queue[Char]('r', 'y', 'o', 'u', 'p', 'q', 'k')
 
-    gameServer ! RequestGame(playerName = name)
+    gameServer ! RequestGame(playerName)
 
     def receive = {
       case status: GameStatus => {
@@ -44,14 +44,12 @@ object Main extends App {
       case GameWon(status) => {
         println("We won the game!")
         println("The word was: " + status.word.map(_.getOrElse('?')).mkString)
-        gameServer ! MakeGuess('x')
-        //system.shutdown()
+        system.shutdown()
       }
       case GameLost(status) => {
         println("We lost the game :-(")
         println("Remaining word: " + status.word.map(_.getOrElse('_')).mkString)
-        gameServer ! MakeGuess('x')
-        //system.shutdown()
+        system.shutdown()
       }
     }
 
