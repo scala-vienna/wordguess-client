@@ -9,10 +9,6 @@ import messages._
 class WordGuesserClient(playerName: String,
   gameServer: ActorRef, system: ActorSystem) extends Actor {
 
-  //val letterQueue = mutable.Queue[Char]('o', 'l', 'e', 'r', 'h', 'w', 'd')
-  val letterQueue = mutable.Queue[Char]('r', 'y', 'o', 'u', 'p', 'q', 'k')
-
-  // def getGuessLetter() = letterQueue.dequeue
   def getGuessLetter(): Char = {
     print("Letter to guess: ")
     Console.readChar
@@ -26,11 +22,8 @@ class WordGuesserClient(playerName: String,
       println("Word: " + wordRepresentation)
       println("Remaining tries: " + status.remainingTries)
       if (status.remainingTries > 0) {
-        if (!letterQueue.isEmpty) {
-          val letter = getGuessLetter()
-          //println("Making guess: " + letter)
-          gameServer ! MakeGuess(letter)
-        }
+        val letter = getGuessLetter()
+        gameServer ! MakeGuess(letter)
       }
     }
     case NoAvailableGames() => {
