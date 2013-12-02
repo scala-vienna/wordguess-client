@@ -9,8 +9,14 @@ import messages._
 class WordGuesserClient(playerName: String,
   gameServer: ActorRef, system: ActorSystem) extends Actor {
 
-  // IMPORTANT: start by requesting a game to the server
-  // (see methods below)
+  // IMPORTANT: 
+  // 1) start by requesting a game to the server
+  // 2) the workflow is ASYNCHRONOUS; so don't participate in a game
+  // until you know you are in one.
+
+  // Main methods at your disposal:
+  // requestGame()
+  // makeGuess('a')
   
   // Incoming messages from the server are handled here
   override def receive = {
@@ -29,7 +35,7 @@ class WordGuesserClient(playerName: String,
   }
 
   // Request a game from the server; start by doing this
-  def requestGameFor(playerName: String) {
+  def requestGame() {
     gameServer ! RequestGame(playerName)
   }
   // You try to guess the word by making guesses
