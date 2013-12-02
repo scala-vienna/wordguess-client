@@ -1,6 +1,7 @@
 package clashcode.wordguess.messages
 
-// =============
-// Messages broadcast to all players
+/**
+ * Ignore for now
+ */
 
 case class MsgToAll(msg:String)
