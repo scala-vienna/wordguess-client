@@ -64,3 +64,4 @@ runner
 #DB files
 *.db
 .target
+/wordguess.jar

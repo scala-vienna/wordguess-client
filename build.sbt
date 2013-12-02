@@ -1,3 +1,9 @@
+import AssemblyKeys._
+
+assemblySettings
+
+// ---
+
 name := "wordguess-client"
 
 version := "0.1.0"
