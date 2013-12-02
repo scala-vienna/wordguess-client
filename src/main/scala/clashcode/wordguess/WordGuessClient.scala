@@ -26,9 +26,9 @@ class WordGuesserClient(playerName: String,
     case GameWon(status) => {}
     // When the game was lost
     case GameLost(status) => {}
-    // If there are no available games (rare)
+    // If there are no more available games (rare, but could happen)
     case NoAvailableGames() => {}
-    // If the client has no active game, but a guess was made
+    // If the client (you) made a guess although no game was requested (or is over)
     case NotPlayingError() => {}
     // When an incoming message arrives (ignore this for now)
     case MsgToAll(msg) => {}
