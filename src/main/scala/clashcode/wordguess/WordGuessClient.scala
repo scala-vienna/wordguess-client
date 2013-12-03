@@ -6,9 +6,8 @@ import scala.collection.mutable
 
 import messages._
 
-class WordGuesserClient(playerName: String,
-  gameServer: ActorRef, system: ActorSystem) extends Actor {
-
+class WordGuesserClient(playerName: String, gameServer: ActorRef) extends Actor {
+      
   // IMPORTANT: 
   // 1) start by requesting a game to the server
   // 2) the workflow is ASYNCHRONOUS; so don't participate in a game
@@ -44,7 +43,7 @@ class WordGuesserClient(playerName: String,
   }
   // You can stop your local app with this (shutdown the actor-system)
   def stopApplication() {
-    system.shutdown()
+    context.system.shutdown()
   }
   // Ignore this for now
   def broadCastMsg(msg: String) {
