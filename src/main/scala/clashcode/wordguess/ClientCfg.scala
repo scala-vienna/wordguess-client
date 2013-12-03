@@ -14,7 +14,7 @@ object ClientCfg {
     new ClientCfg {
       val port = loadedCfg.getInt("server.port")
       val hostIp = loadedCfg.getString("server.ip")
-      val playerName = loadedCfg.getString("player.name")
+      val playerName = loadedCfg.getString("local.player")
     }
   }
 }
