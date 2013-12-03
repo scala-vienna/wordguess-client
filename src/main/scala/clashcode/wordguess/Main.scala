@@ -9,7 +9,7 @@ object Main extends App {
     val system = ActorSystem("local")
     
     val gameServer = system.actorFor(
-      s"akka.tcp://cluster@${cfg.host}:${cfg.port}/user/main")
+      s"akka.tcp://cluster@${cfg.hostIp}:${cfg.port}/user/main")
     val actorProperties = Props(classOf[WordGuesserClient], s"@${cfg.playerName}", gameServer)
     val playerActor = system.actorOf(actorProperties, name = s"player-${cfg.playerName}")
   }

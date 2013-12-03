@@ -4,7 +4,7 @@ import com.typesafe.config.ConfigFactory
 
 trait ClientCfg {
   def port: Int
-  def host: String
+  def hostIp: String
   def playerName: String
 }
 
@@ -13,7 +13,7 @@ object ClientCfg {
     val loadedCfg = ConfigFactory.load()
     new ClientCfg {
       val port = loadedCfg.getInt("server.port")
-      val host = loadedCfg.getString("server.host")
+      val hostIp = loadedCfg.getString("server.ip")
       val playerName = loadedCfg.getString("player.name")
     }
   }
