@@ -9,25 +9,33 @@ http://www.meetup.com/scala-vienna/events/122006312/
 - SBT 0.13.0
 - An IDE (Eclipse, IntelliJ) with Scala support
 
-## Instructions
+If you use **SBT 0.12.x** you have to edit `project/plugins.sbt`. Follow instructions there.
+
+## Configuration
 
 Unless stated otherwise by the Dojo facilitator, follow these instructions.
 
 ### Changes to `application.conf`
 
-- Find out your IP address
+Gather information:
+
+- Find out the **IP address** of your *local* machine
+- Ask the facilitator the **IP address** and PORT of the *server*
+
+Edit the client settings:
+
 - Edit `src/main/resources/application.conf`
-- Enter your IP address in `hostname`
+- Enter the server port in `server.port`
+- Enter the server IP address in `server.ip`
+- Enter your IP address in `local.ip`
+- Enter an original, but short, **player-name** for `local.player` (e.g. "HomerSimpson")
 
-### Changes to `Main.scala`
-
-- Ask facilitator the IP and port of the game-server
-- Edit `clashcode.wordguess.Main`
-- Enter the IP and ports given by the facilitator
-- Enter an original, but short, **player-name** for `localPlayerName`
+IMPORTANT: IP-addresses have to be put in double-quotes. Otherwise the configuration lib tries to parse it as a float.
 
 ## Procedure
 
 Follow the instructions in `WordGuesserClient` and from the facilitator.
+
+Remember: the goal is not to finish but to learn and have fun!
 
 Enjoy the dojo!
