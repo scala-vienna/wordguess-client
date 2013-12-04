@@ -65,3 +65,4 @@ runner
 *.db
 .target
 /wordguess.jar
+guess.sh
