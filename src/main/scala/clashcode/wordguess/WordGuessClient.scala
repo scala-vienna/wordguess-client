@@ -29,7 +29,7 @@ class WordGuesserClient(playerName: String, gameServer: ActorRef) extends Actor 
     case NoAvailableGames() => {}
     // If the client (you) made a guess although no game was requested (or is over)
     case NotPlayingError() => {}
-    // When an incoming message arrives (ignore this for now)
+    // When an chat message arrives 
     case MsgToAll(msg) => {}
   }
 
@@ -45,7 +45,7 @@ class WordGuesserClient(playerName: String, gameServer: ActorRef) extends Actor 
   def stopApplication() {
     context.system.shutdown()
   }
-  // Ignore this for now
+  // You can send a message to all other players (to chat?)
   def broadCastMsg(msg: String) {
     gameServer ! SendToAll(msg)
   }

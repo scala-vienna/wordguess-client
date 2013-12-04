@@ -1,7 +1,4 @@
 package clashcode.wordguess.messages
 
-/**
- * Ignore for now
- */
-
+// Players get this message when talking to each other
 case class MsgToAll(msg:String)
